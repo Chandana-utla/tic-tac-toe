@@ -1,12 +1,47 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+🎮 Emoji Tic Tac Toe
+A playful twist on classic Tic Tac Toe, built with React! Players select emoji categories and take turns placing random emojis on the board. But there's a twist — emojis vanish after 3 plays!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🧰 Tech Stack
+React (Functional Components & Hooks)
 
-## Expanding the ESLint configuration
+JavaScript (ES6+)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+CSS for basic styling and responsive UI
+
+🏷️ Emoji Categories
+Players can choose from the following fun categories:
+
+🐶 Animals: 🐶 🐱 🐵 🐰 🦊 🐻
+
+🍔 Food: 🍕 🍟 🍔 🍩 🌮 🍎
+
+⚽ Sports: ⚽ 🏀 🏈 🎾 🏐 🎱
+
+🌸 Nature: 🌸 🌺 🌻 🌷 🌹 🌼
+
+🌟 Space: 🌟 ⭐ 🌙 ☀️ 🪐 🚀
+
+❤️ Hearts: ❤️ 💖 💕 💗 💝 💘
+
+🧙 Vanishing Emoji Feature
+To keep things dynamic, each player can only have 3 emojis on the board at a time. Once a player places a 4th emoji:
+
+The oldest emoji (based on turn order) is automatically removed from the board.
+
+This is implemented by:
+
+Tracking player positions in playerPositions
+
+Using .shift() to remove the oldest entry when the count exceeds 3
+
+Updating the board to null at the removed position
+
+if (newPlayerPositions[currentPlayer].length > 3) {
+  const oldestPosition = newPlayerPositions[currentPlayer].shift();
+  newPlayerEmojis[currentPlayer].shift();
+  newBoard[oldestPosition] = null;
+}
+This keeps gameplay strategic and fresh!
+
